@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Trisha</string>
+    <string name="register">Register</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="logout_confirmation">Keluar Akun?</string>
+    <string name="Yes">Ya</string>
+    <string name="No">Tidak</string>
+</resources>
