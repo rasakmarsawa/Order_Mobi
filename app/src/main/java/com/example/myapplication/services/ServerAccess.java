@@ -139,6 +139,7 @@ public class ServerAccess {
                         case api.URL_RELOAD_USER_DATA:
                             try {
                                 error = response.getString("error");
+                                Log.d("reload", "onPostExecute: "+response.toString());
                                 if (error.equals("E00")){
                                     JSONObject data = response.getJSONObject("data");
 
@@ -202,6 +203,8 @@ public class ServerAccess {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+
+
 
                             activity = (Activity) context;
                             RecyclerView rv_barang = (RecyclerView) activity.findViewById(R.id.rv_barang);

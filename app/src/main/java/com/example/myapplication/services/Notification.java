@@ -9,6 +9,7 @@ public class Notification  extends Application {
 
     public static final String CHANNEL_1_ID = "statusUpdate";
     public static final String CHANNEL_2_ID = "forceLogout";
+    public static final String CHANNEL_3_ID = "antrianStatus";
 
     @Override
     public void onCreate() {
@@ -33,9 +34,17 @@ public class Notification  extends Application {
             );
             channel2.setDescription("This is channel 2");
 
+            NotificationChannel channel3 = new NotificationChannel(
+                    CHANNEL_3_ID,
+                    "channel 3",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel3.setDescription("Channel untuk status restoran");
+
             NotificationManager manager = getSystemService((NotificationManager.class));
             manager.createNotificationChannel(channel1);
             manager.createNotificationChannel(channel2);
+            manager.createNotificationChannel(channel3);
         }
     }
 }

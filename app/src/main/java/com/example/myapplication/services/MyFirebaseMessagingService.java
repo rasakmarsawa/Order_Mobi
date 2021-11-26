@@ -54,6 +54,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
+            case 3:
+                antrianStatusNotification(data.get(new String("data")));
+                break;
             default:
                 Log.d("default", "onMessageReceived: Default");
                 break;
@@ -95,6 +98,28 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(2,notification);
+    }
+
+    public void antrianStatusNotification(String status){
+        String title, msg;
+        if (status.equals("1")){
+            title = "Restoran buka";
+            msg = "Sudah bisa pesan makanan ya";
+        }else{
+            title = "Restoran tutup";
+            msg = "Udah gak bisa mesan makanan lagi";
+        }
+
+        android.app.Notification notification = new NotificationCompat.Builder(this,Notification.CHANNEL_3_ID)
+                .setSmallIcon(R.drawable.ic_fried_rice)
+                .setContentTitle(title)
+                .setContentText(msg)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(3,notification);
     }
 
     public String getMessage(Integer status){

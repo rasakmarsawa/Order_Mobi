@@ -1,6 +1,5 @@
 package com.example.myapplication.activities.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +12,7 @@ import android.widget.EditText;
 
 import com.example.myapplication.services.LoadingDialogBar;
 import com.example.myapplication.R;
+import com.example.myapplication.services.MyFirebaseMessagingService;
 import com.example.myapplication.services.ServerAccess;
 import com.example.myapplication.services.api;
 
@@ -40,12 +40,9 @@ public class LoginFragment extends Fragment {
 
         dialog = new LoadingDialogBar(getContext());
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ServerAccess serverAccess = new ServerAccess(getContext(), api.URL_LOGIN,"Login");
-                serverAccess.StartProcess(getData());
-            }
+        btn_login.setOnClickListener(v -> {
+            ServerAccess serverAccess = new ServerAccess(getContext(), api.URL_LOGIN,"Login");
+            serverAccess.StartProcess(getData());
         });
 
         return view;
@@ -54,12 +51,9 @@ public class LoginFragment extends Fragment {
     public JSONObject getData(){
         JSONObject data = new JSONObject();
         try {
-
-            SharedPreferences token = getContext().getSharedPreferences("token",getContext().MODE_PRIVATE);
-
             data.put("username",et_username.getText().toString().trim());
             data.put("password",et_password.getText().toString().trim());
-            data.put("fcm_token",token.getString("token",null));
+            data.put("fcm_token",new MyFirebaseMessagingService().getToken(getContext()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
