@@ -18,6 +18,7 @@
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_minus.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_plus.xml" value="0.12083333333333333" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_detail_pesanan.xml" value="0.33" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_history.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_list.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_pesan.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_test.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_verification.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/barangrow.xml" value="0.4537037037037037" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/confirmrow.xml" value="0.37407407407407406" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/dialog.xml" value="0.33" />

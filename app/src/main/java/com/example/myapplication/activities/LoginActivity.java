@@ -6,12 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.myapplication.activities.fragments.LoginFragment;
+import com.example.myapplication.entities.User;
 import com.example.myapplication.services.MyFirebaseMessagingService;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.fragments.RegisterFragment;
@@ -29,11 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //clearing session when this user open this activity
-        SharedPreferences session = this.getSharedPreferences("session",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = session.edit();
-        editor.clear();
-        editor.apply();
+        User user = new User(this);
+        user.clearSession(this);
 
         //clearing token when this user open this activity
         try {

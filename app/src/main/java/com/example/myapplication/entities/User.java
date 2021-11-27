@@ -77,4 +77,12 @@ public class User {
         editor.putString("saldo", String.valueOf(this.saldo));
         editor.apply();
     }
+
+    public void clearSession(Context context) {
+        SharedPreferences session = context.getSharedPreferences("session",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor =  session.edit();
+
+        editor.clear();
+        editor.apply();
+    }
 }

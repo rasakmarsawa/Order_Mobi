@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".activities.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.VerificationActivity"
+            android:exported="false"></activity>
 
         <service
             android:name=".services.MyFirebaseMessagingService"
@@ -28,8 +34,9 @@
             android:name=".activities.DetailPesananActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="DetailActivity"/>"
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="DetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -42,8 +49,9 @@
             android:name=".activities.LoginActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="LoginActivity"/>"
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -51,16 +59,8 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="http"
-                    android:host="onlinetrisha.000webhostapp.com">
-                </data>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

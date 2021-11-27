@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.myapplication.R;
 import com.example.myapplication.services.LoadingDialogBar;
@@ -28,12 +27,9 @@ public class PesanActivity extends AppCompatActivity {
         ServerAccess serverAccess = new ServerAccess(this, api.URL_GET_BARANG,"Loading");
         serverAccess.StartProcess(new JSONObject());
 
-        findViewById(R.id.cv_pesan).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.ShowConfirmation(serverAccess.getDataReturn());
-            }
-        });
+        findViewById(R.id.cv_pesan).setOnClickListener(v ->
+                dialog.ShowConfirmation(serverAccess.getDataReturn())
+        );
 
     }
 }

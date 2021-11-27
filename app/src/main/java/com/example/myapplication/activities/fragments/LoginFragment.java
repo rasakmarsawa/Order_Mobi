@@ -1,5 +1,6 @@
 package com.example.myapplication.activities.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.myapplication.activities.ForgotPasswordActivity;
 import com.example.myapplication.services.LoadingDialogBar;
 import com.example.myapplication.R;
 import com.example.myapplication.services.MyFirebaseMessagingService;
@@ -37,12 +40,18 @@ public class LoginFragment extends Fragment {
         Button btn_login = (Button) view.findViewById(R.id.btn_login);
         et_username = (EditText) view.findViewById(R.id.et_username);
         et_password = (EditText) view.findViewById(R.id.et_password);
+        TextView tv_forgot = (TextView) view.findViewById(R.id.tv_forgot);
 
         dialog = new LoadingDialogBar(getContext());
 
         btn_login.setOnClickListener(v -> {
             ServerAccess serverAccess = new ServerAccess(getContext(), api.URL_LOGIN,"Login");
             serverAccess.StartProcess(getData());
+        });
+
+        tv_forgot.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ForgotPasswordActivity.class);
+            startActivity(intent);
         });
 
         return view;

@@ -14,4 +14,6 @@ public class api {
     public static final String URL_GET_HISTORY = ROOT_URL + "get_history";
     public static final String URL_CANCEL = ROOT_URL + "cancel";
     public static final String URL_LOGOUT = ROOT_URL + "logout";
+    public static final String URL_REQUEST = ROOT_URL + "request";
+    public static final String URL_GET_FORGOT = ROOT_URL + "get_forgot";
 }

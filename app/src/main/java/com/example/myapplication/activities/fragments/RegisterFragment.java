@@ -4,13 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.myapplication.entities.FormCheck;
 import com.example.myapplication.services.LoadingDialogBar;
 import com.example.myapplication.R;
 import com.example.myapplication.services.ServerAccess;
@@ -43,17 +43,24 @@ public class RegisterFragment extends Fragment {
         dialog = new LoadingDialogBar(getContext());
 
         Button btn_register = (Button) view.findViewById(R.id.btn_register);
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btn_register.setOnClickListener(v -> {
+            JSONObject data = getData();
+            FormCheck formCheck = new FormCheck(data);
 
-                if (Patterns.EMAIL_ADDRESS.matcher(et_email.getText()).matches()){
+            try {
+                formCheck.LengthCheck("username",6,20);
+                formCheck.LengthCheck("password",6,20);
+                formCheck.EmailCheck("email");
+
+                if (formCheck.getCheck()){
                     ServerAccess serverAccess = new ServerAccess(getContext(), api.URL_REGISTER,"Register");
-                    serverAccess.StartProcess(getData());
+                    serverAccess.StartProcess(data);
                 }else{
                     LoadingDialogBar dialog = new LoadingDialogBar(getContext());
-                    dialog.ShowNotification("Format email tidak benar",false);
+                    dialog.ShowNotification(formCheck.getMsg(), false);
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         });
 

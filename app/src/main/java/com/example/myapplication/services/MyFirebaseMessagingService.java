@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.DetailPesananActivity;
 import com.example.myapplication.activities.LoginActivity;
+import com.example.myapplication.entities.User;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -38,6 +39,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         Map<String , String> data = remoteMessage.getData();
         Integer type = Integer.valueOf(data.get(new String("type")));
+        User user = new User(this);
         switch (type){
             case 1:
                 try {
@@ -55,7 +57,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 startActivity(intent);
                 break;
             case 3:
-                antrianStatusNotification(data.get(new String("data")));
+                if (user.getUsername()!=null){
+                    antrianStatusNotification(data.get(new String("data")));
+                }
                 break;
             default:
                 Log.d("default", "onMessageReceived: Default");
