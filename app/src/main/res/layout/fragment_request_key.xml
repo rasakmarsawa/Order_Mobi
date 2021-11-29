@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.VerificationActivity"
-    android:background="@drawable/gradient_background">
+    tools:context=".activities.fragments.RequestKeyFragment">
 
     <TextView
         android:id="@+id/textView5"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/indigo_daisy"
-        android:text="Verifikasi Akun"
+        android:text="Kode Verifikasi"
         android:textSize="6mm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,31 +26,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Masukkan kode verifikasi"
+        android:text="Lihat email anda untuk\nmemperoleh kode verifikasi"
         android:textSize="3mm"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/et_verif"
+        android:id="@+id/et_kode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="Kode Verifikasi"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/btn_verif"
+        android:id="@+id/btn_submit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Verifikasi Akun"
-        app:layout_constraintEnd_toEndOf="@+id/et_verif"
-        app:layout_constraintStart_toStartOf="@+id/et_verif"
-        app:layout_constraintTop_toBottomOf="@+id/et_verif" />
+        android:text="Verifikasi"
+        app:layout_constraintEnd_toEndOf="@+id/et_kode"
+        app:layout_constraintStart_toStartOf="@+id/et_kode"
+        app:layout_constraintTop_toBottomOf="@+id/et_kode" />
 </androidx.constraintlayout.widget.ConstraintLayout>

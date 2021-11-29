@@ -26,14 +26,19 @@
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main2.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_pesan.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_register.xml" value="0.33" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_request.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_test.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_verification.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/barangrow.xml" value="0.4537037037037037" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/confirmrow.xml" value="0.37407407407407406" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/dialog.xml" value="0.33" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/dialog_confirmation.xml" value="0.25" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_forgot_password_form.xml" value="0.22" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_login.xml" value="0.320695102685624" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_request_forgot.xml" value="0.13994565217391305" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_request_forgot_password.xml" value="0.25" />
+        <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_request_key.xml" value="0.25" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/loadmorerow.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/logout.xml" value="0.67" />
         <entry key="..\:/Users/X9090/AndroidStudioProjects/MyApplication/app/src/main/res/layout/notification.xml" value="0.33" />

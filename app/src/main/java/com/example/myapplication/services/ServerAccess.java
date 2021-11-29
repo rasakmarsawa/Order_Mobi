@@ -17,7 +17,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.activities.LoginActivity;
 import com.example.myapplication.activities.MainActivity;
 import com.example.myapplication.activities.PesanActivity;
-import com.example.myapplication.activities.VerificationActivity;
+import com.example.myapplication.activities.RequestActivity;
 import com.example.myapplication.entities.User;
 
 import org.apache.http.HttpResponse;
@@ -90,7 +90,6 @@ public class ServerAccess {
 
                 super.onPostExecute(result);
                 GlobalAdapter adapter;
-                final Activity activity = (Activity) context;
 
                 if (!dialog_msg.equals("null")){
                     dialog.HideDialog();
@@ -104,7 +103,8 @@ public class ServerAccess {
                             if (error.equals("E10")){
                                 dialog.ShowNotification("Register berhasil. Buka email untuk melihat kode verifikasi.",true);
                                 dialog.notification.setOnDismissListener(dialog -> {
-                                    Intent intent = new Intent(context, VerificationActivity.class);
+                                    Intent intent = new Intent(context, RequestActivity.class);
+                                    intent.putExtra("type","request_key");
                                     context.startActivity(intent);
                                 });
                             }else{
@@ -117,6 +117,7 @@ public class ServerAccess {
                             break;
                         case api.URL_LOGIN:
                             error = response.getString("error");
+                            Activity a = (Activity) context;
                             Intent intent;
                             switch (error){
                                 case "E20":
@@ -133,15 +134,16 @@ public class ServerAccess {
 
                                     intent = new Intent(context, MainActivity.class);
                                     context.startActivity(intent);
-                                    activity.finish();
+                                    a.finish();
                                     break;
                                 case "E21":
                                     dialog.ShowNotification("Ups! Username dan password tidak sesuai.",false);
                                     break;
                                 case "E22":
-                                    intent = new Intent(context, VerificationActivity.class);
+                                    intent = new Intent(context, RequestActivity.class);
+                                    intent.putExtra("type","request_key");
                                     context.startActivity(intent);
-                                    activity.finish();
+                                    a.finish();
                                     break;
                                 default:
                                     dialog.ShowNotification("Proses gagal. Isi data dengan lengkap",false);
@@ -149,6 +151,7 @@ public class ServerAccess {
                             }
                             break;
                         case api.URL_RELOAD_USER_DATA:
+                            Activity b = (Activity) context;
                             try {
                                 error = response.getString("error");
                                 Log.d("reload", "onPostExecute: "+response.toString());
@@ -166,15 +169,15 @@ public class ServerAccess {
                                         );
                                         user.setSession(context);
 
-                                        TextView welcome = (TextView) activity.findViewById(R.id.tv_welcome);
-                                        TextView saldo = (TextView) activity.findViewById(R.id.tv_saldo);
+                                        TextView welcome = (TextView) b.findViewById(R.id.tv_welcome);
+                                        TextView saldo = (TextView) b.findViewById(R.id.tv_saldo);
 
                                         welcome.setText("Selamat Datang,\n"+user.getNama_pelanggan());
                                         saldo.setText("Saldo Saat Ini:\nRp. "+user.getSaldo());
                                     }else{
                                         intent = new Intent(context, LoginActivity.class);
-                                        activity.startActivity(intent);
-                                        activity.finish();
+                                        b.startActivity(intent);
+                                        b.finish();
                                     }
                                 }else{
                                     if (error.equals("E31")){
@@ -202,6 +205,7 @@ public class ServerAccess {
                             }
                             break;
                         case api.URL_GET_BARANG:
+                            Activity g = (Activity) context;
                             data_return = new JSONArray();
                             try {
                                 data_return = response.getJSONArray("data");
@@ -214,7 +218,7 @@ public class ServerAccess {
                                 e.printStackTrace();
                             }
 
-                            RecyclerView rv_barang = (RecyclerView) activity.findViewById(R.id.rv_barang);
+                            RecyclerView rv_barang = (RecyclerView) g.findViewById(R.id.rv_barang);
 
                             adapter = new GlobalAdapter(context,data_return,0);
                             rv_barang.setAdapter(adapter);
@@ -239,12 +243,13 @@ public class ServerAccess {
                         case api.URL_LOGOUT:
                             break;
                         case api.URL_GET_ANTRIAN_BY_USER:
+                            Activity c = (Activity) context;
                             error = response.getString("error");
                             try {
                                 if (error.equals("E60")) {
                                     adapter = new GlobalAdapter(context, response.getJSONArray("data"),2);
 
-                                    RecyclerView rv_pesanan = (RecyclerView) activity.findViewById(R.id.rv_pesanan);
+                                    RecyclerView rv_pesanan = (RecyclerView) c.findViewById(R.id.rv_pesanan);
                                     rv_pesanan.setAdapter(adapter);
                                     rv_pesanan.setLayoutManager(new LinearLayoutManager(context));
                                 }else{
@@ -255,13 +260,15 @@ public class ServerAccess {
                             }
                             break;
                         case api.URL_GET_DETAIL_PESANAN_BY_PESANAN:
+                            Activity j = (Activity)context;
                             adapter = new GlobalAdapter(context,response.getJSONArray("data"),1);
 
-                            RecyclerView rv_detail = (RecyclerView) activity.findViewById(R.id.rv_detail);
+                            RecyclerView rv_detail = (RecyclerView) j.findViewById(R.id.rv_detail);
                             rv_detail.setAdapter(adapter);
                             rv_detail.setLayoutManager(new LinearLayoutManager(context));
                             break;
                         case api.URL_GET_HISTORY:
+                            Activity h = (Activity) context;
                             error = response.getString("error");
                             try {
                                 if (error.equals("E80")) {
@@ -278,7 +285,7 @@ public class ServerAccess {
 
                                     adapter = new GlobalAdapter(context, data_return,2);
 
-                                    RecyclerView rv_pesanan = (RecyclerView) activity.findViewById(R.id.rv_pesanan);
+                                    RecyclerView rv_pesanan = (RecyclerView) h.findViewById(R.id.rv_pesanan);
                                     rv_pesanan.setAdapter(adapter);
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(context);
                                     rv_pesanan.setLayoutManager(layoutManager);
@@ -314,34 +321,87 @@ public class ServerAccess {
                             }
                             break;
                         case api.URL_CANCEL:
+                            Activity d = (Activity) context;
                             error = response.getString("error");
                             if (error.equals("E90")){
-                                activity.finish();
+                                d.finish();
                             }else{
                                 dialog.ShowNotification("Pesananmu udah disiapin dan gak bisa dibatalkan nih.",false);
                             }
                             break;
                         case api.URL_REQUEST:
+                            Activity k = (Activity) context;
                             error = response.getString("error");
                             switch (error){
-                                case "E110":
-                                    dialog.ShowNotification("Akunmu sudah berhasil di verifikasi. Silahkan login kembali",true);
+                                case "E110-10":
+                                    dialog.ShowNotification("Akun mu sudah di verifikasi, silahkan login kembali.",true);
                                     dialog.notification.setOnDismissListener(dialog -> {
-                                        Intent i = new Intent(context,LoginActivity.class);
-                                        activity.startActivity(i);
-                                        activity.finish();
+                                        k.finish();
                                     });
                                     break;
+                                case "E110-11":
+                                    dialog.ShowNotification("Akun mu tidak berhasil verifikasi.",false);
+                                    break;
+                                case "E110-20":
+                                    try {
+                                        Intent i = new Intent(context,RequestActivity.class);
+                                        i.putExtra("data",response.getJSONObject("data").toString());
+                                        i.putExtra("type","forgot_password_form");
+                                        k.startActivity(i);
+                                        k.finish();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    break;
+                                case "E110-01":
+                                    dialog.ShowNotification("Tipe request tidak diketahui",false);
+                                    break;
                                 case "E111":
-                                    dialog.ShowNotification("Verifikasi akun tidak berhasil",false);
+                                    dialog.ShowNotification("Kode Verifikasi salah atau sudah expired",false);
                                     break;
                                 default:
-                                    dialog.ShowNotification("Ups! Kode yang kamu masukkan tidak valid", false);
+                                    dialog.ShowNotification("Masukkan kode verifikasi terlebih dahulu",false);
                                     break;
                             }
                             break;
-                        case api.URL_GET_FORGOT:
-                            Log.d("bug", "onPostExecute: "+response.toString());
+                        case api.URL_REQUEST_FORGOT:
+                            Activity e = (Activity) context;
+                            error = response.getString("error");
+                            switch (error){
+                                case "E120":
+                                    dialog.ShowNotification("Request berhasil dibuat.\nCek email anda untuk mendapatkan kode verifikasi.",true);
+                                    dialog.notification.setOnDismissListener(dialog -> {
+                                        Intent i = new Intent(context,RequestActivity.class);
+                                        i.putExtra("type","request_key");
+                                        e.startActivity(i);
+                                        e.finish();
+                                    });
+                                    break;
+                                case "E121":
+                                    dialog.ShowNotification("Email dan username tidak ditemukan",false);
+                                    break;
+                                default:
+                                    dialog.ShowNotification("Masukkan email dan username akun anda",false);
+                                    break;
+                            }
+                            break;
+                        case api.URL_CHANGE_PASSWORD:
+                            Activity f = (Activity) context;
+                            error = response.getString("error");
+                            switch (error){
+                                case "E130":
+                                    dialog.ShowNotification("Reset password berhasil",true);
+                                    dialog.notification.setOnDismissListener(dialog -> {
+                                        f.finish();
+                                    });
+                                    break;
+                                case "E131":
+                                    dialog.ShowNotification("Password baru sama dengan yang sebelumnya.",false);
+                                    break;
+                                default:
+                                    dialog.ShowNotification("Masukkan password baru yang diinginkan.",false);
+                                    break;
+                            }
                             break;
                     }
 

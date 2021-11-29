@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.myapplication.activities.ForgotPasswordActivity;
+import com.example.myapplication.activities.RequestActivity;
 import com.example.myapplication.services.LoadingDialogBar;
 import com.example.myapplication.R;
 import com.example.myapplication.services.MyFirebaseMessagingService;
@@ -50,7 +50,7 @@ public class LoginFragment extends Fragment {
         });
 
         tv_forgot.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), ForgotPasswordActivity.class);
+            Intent intent = new Intent(getContext(), RequestActivity.class);
             startActivity(intent);
         });
 

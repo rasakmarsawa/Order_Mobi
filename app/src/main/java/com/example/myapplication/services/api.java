@@ -15,5 +15,6 @@ public class api {
     public static final String URL_CANCEL = ROOT_URL + "cancel";
     public static final String URL_LOGOUT = ROOT_URL + "logout";
     public static final String URL_REQUEST = ROOT_URL + "request";
-    public static final String URL_GET_FORGOT = ROOT_URL + "get_forgot";
+    public static final String URL_REQUEST_FORGOT = ROOT_URL + "request_forgot";
+    public static final String URL_CHANGE_PASSWORD = ROOT_URL + "change_password";
 }

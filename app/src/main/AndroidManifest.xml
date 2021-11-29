@@ -13,11 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name=".activities.RequestActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.VerificationActivity"
-            android:exported="false"></activity>
 
         <service
             android:name=".services.MyFirebaseMessagingService"
