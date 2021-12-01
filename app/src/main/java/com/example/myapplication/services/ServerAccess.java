@@ -309,7 +309,7 @@ public class ServerAccess {
                                     }
                                 }else{
                                     if (old != null){
-                                        dialog.ShowNotification("Semua pesananmu sudah di tampilkan",false);
+                                        dialog.ShowNotification("Semua pesananmu sudah di tampilkan",true);
                                         canLoadMore = false;
                                     }else{
                                         dialog.ShowNotification("Kamu belum memesan apapun",false);
