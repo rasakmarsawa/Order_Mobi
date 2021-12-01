@@ -61,14 +61,8 @@ public class DetailPesananActivity extends AppCompatActivity {
                 });
             }else{
                 TextView tv_batal = (TextView) findViewById(R.id.tv_batal);
-                String stat = new String();
-                switch (pesanan.getInt("status")){
-                    case 2: stat = "Dalam Proses"; break;
-                    case 3: stat = "Menunggu Pengambilan"; break;
-                    case 4: stat = "Selesai"; break;
-                    case 5: stat = "Dibatalkan"; break;
-                }
-                tv_batal.setText(stat);
+
+                tv_batal.setText(pesanan.getString("nama_status"));
                 cv_batal.setCardBackgroundColor(getResources().getColor(R.color.light_green));
                 cv_batal.setOutlineSpotShadowColor(getResources().getColor(R.color.light_green));
             }

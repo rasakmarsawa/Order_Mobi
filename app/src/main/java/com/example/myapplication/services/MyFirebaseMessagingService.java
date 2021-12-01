@@ -81,7 +81,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         android.app.Notification notification = new NotificationCompat.Builder(this, Notification.CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_fried_rice)
                 .setContentTitle("Pesanan")
-                .setContentText(getMessage(pesanan.getInt("status")))
+                .setContentText(pesanan.getString("message"))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setContentIntent(pendingIntent)
@@ -124,22 +124,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(3,notification);
-    }
-
-    public String getMessage(Integer status){
-        switch (status){
-            case 2:{
-                return "Pesananmu mulai disiapkan ya.";
-            }
-            case 3:{
-                return "Pesananmu sudah siap, lagi nunggu dijemput.";
-            }
-            case 4:{
-                return "Pesananmu sudah diambil.";
-            }
-            default:{
-                return "Pesananmu dibatalkan.";
-            }
-        }
     }
 }
