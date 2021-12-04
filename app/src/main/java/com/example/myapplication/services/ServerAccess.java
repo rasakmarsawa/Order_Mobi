@@ -252,8 +252,6 @@ public class ServerAccess {
                                     RecyclerView rv_pesanan = (RecyclerView) c.findViewById(R.id.rv_pesanan);
                                     rv_pesanan.setAdapter(adapter);
                                     rv_pesanan.setLayoutManager(new LinearLayoutManager(context));
-                                }else{
-                                    dialog.ShowNotification("Kamu belum memesan apapun",false);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -311,10 +309,7 @@ public class ServerAccess {
                                     if (old != null){
                                         dialog.ShowNotification("Semua pesananmu sudah di tampilkan",true);
                                         canLoadMore = false;
-                                    }else{
-                                        dialog.ShowNotification("Kamu belum memesan apapun",false);
                                     }
-
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
