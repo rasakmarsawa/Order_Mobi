@@ -1,7 +1,7 @@
 package com.example.myapplication.services;
 
 public class api {
-    public static final String ROOT_URL = "http://onlinetrisha.000webhostapp.com/controller/api.php?function=";
+    public static final String ROOT_URL = "https://onlinetrisha.000webhostapp.com/controller/api.php?function=";
 
     public static final String URL_REGISTER = ROOT_URL + "register";
     public static final String URL_LOGIN = ROOT_URL + "login";
