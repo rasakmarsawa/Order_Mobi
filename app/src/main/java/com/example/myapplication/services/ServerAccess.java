@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.ListActivity;
 import com.example.myapplication.activities.LoginActivity;
 import com.example.myapplication.activities.MainActivity;
 import com.example.myapplication.activities.PesanActivity;
@@ -233,6 +234,8 @@ public class ServerAccess {
                                     public void onDismiss(DialogInterface dialog) {
                                         context = ((ContextWrapper) context).getBaseContext();
                                         Activity act = (Activity) context;
+                                        Intent intent = new Intent(context, ListActivity.class);
+                                        act.startActivity(intent);
                                         act.finish();
                                     }
                                 });

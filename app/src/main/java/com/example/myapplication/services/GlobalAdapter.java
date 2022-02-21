@@ -1,5 +1,7 @@
 package com.example.myapplication.services;
 
+import static com.example.myapplication.services.api.ROOT_IMAGES;
+
 import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.activities.DetailPesananActivity;
 
@@ -107,6 +110,11 @@ public class GlobalAdapter extends RecyclerView.Adapter {
                     barangrowHolder barangrow = (barangrowHolder) holder;
                     barangrow.tv_nama_barang.setText(barang.getString("nama_barang"));
                     barangrow.tv_harga.setText("Rp. "+barang.getString("harga"));
+                    String x = ROOT_IMAGES
+                            + barang.getString("id_barang")
+                            + "."
+                            + barang.getString("type");
+                    Glide.with(context).load(x).into(barangrow.iv_barang);
 
                     barangrow.tv_jumlah.addTextChangedListener(new TextWatcher() {
                         @Override

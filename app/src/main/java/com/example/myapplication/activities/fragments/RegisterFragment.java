@@ -48,6 +48,7 @@ public class RegisterFragment extends Fragment {
             FormCheck formCheck = new FormCheck(data);
 
             try {
+                formCheck.EmptyCheck();
                 formCheck.LengthCheck("username",6,20);
                 formCheck.LengthCheck("password",6,20);
                 formCheck.EmailCheck("email");
